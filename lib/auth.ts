@@ -5,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
 import { Adapter } from "next-auth/adapters";
 
-const options: NextAuthOptions = {
+export const options: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -26,7 +26,7 @@ const options: NextAuthOptions = {
           user.hashedPassword!
         );
         if (!passwordMatch) return null;
-        return { id: user.id, username: user.name, email: user.email };
+        return { id: user.id, username: user.username, email: user.email };
       },
     }),
   ],
